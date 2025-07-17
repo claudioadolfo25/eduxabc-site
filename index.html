@@ -1945,24 +1945,24 @@
             return Array.from(checkboxes).map(cb => cb.value).join(', ');
         }
 
-        // Función para enviar email
-        function sendEmail(templateParams, feedbackElement, successMessage) {
-            showFeedback(feedbackElement, 'loading', 'Enviando mensaje...');
+function sendEmail(templateParams, feedbackElement, successMessage) {
+    showFeedback(feedbackElement, 'loading', 'Enviando mensaje...');
+    
+    // 👉 Agregamos la Public Key como cuarto parámetro
+    emailjs.send('service_exxl1od', 'template_mn5lbav', templateParams, 'uX9YPBiSSMPDTflud')
+        .then(function(response) {
+            console.log('Email enviado exitosamente:', response);
+            showFeedback(feedbackElement, 'success', successMessage);
             
-            emailjs.send('service_exxl1od', 'template_mn5lbav', templateParams)
-                .then(function(response) {
-                    console.log('Email enviado exitosamente:', response);
-                    showFeedback(feedbackElement, 'success', successMessage);
-                    
-                    // Limpiar formulario después de 3 segundos
-                    setTimeout(() => {
-                        feedbackElement.style.display = 'none';
-                    }, 5000);
-                }, function(error) {
-                    console.error('Error al enviar email:', error);
-                    showFeedback(feedbackElement, 'error', 'Error al enviar el mensaje. Por favor, inténtelo nuevamente.');
-                });
-        }
+            // Limpiar mensaje después de 5 segundos
+            setTimeout(() => {
+                feedbackElement.style.display = 'none';
+            }, 5000);
+        }, function(error) {
+            console.error('Error al enviar email:', error);
+            showFeedback(feedbackElement, 'error', 'Error al enviar el mensaje. Por favor, inténtelo nuevamente.');
+        });
+}
 
         // Formulario Individual
         document.getElementById('individualForm').addEventListener('submit', function(e) {
