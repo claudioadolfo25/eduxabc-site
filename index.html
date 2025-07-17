@@ -2189,81 +2189,7 @@ Mensaje: ${formData.get('contactMessage')}
         // Iniciar el carrusel
         startHeroCarousel();
 
-        // ===== FORMULARIOS OPTIMIZADOS =====
-        
-        // Configuración de Formspree
-        const FORMSPREE_ENDPOINT = "https://formspree.io/f/mdoqnerr";
-        
-        // Función para mostrar feedback
-        function showFeedback(formId, message, isSuccess) {
-            const feedbackElement = document.getElementById(`${formId}Feedback`);
-            feedbackElement.textContent = message;
-            feedbackElement.className = `form-feedback ${isSuccess ? 'success' : 'error'}`;
-            
-            // Desaparecer después de 5 segundos
-            setTimeout(() => {
-                feedbackElement.style.opacity = '0';
-                setTimeout(() => {
-                    feedbackElement.style.display = 'none';
-                    feedbackElement.style.opacity = '1';
-                }, 500);
-            }, 5000);
-        }
-        
-        // Función para enviar formularios
-        async function handleFormSubmit(event, formType) {
-            event.preventDefault();
-            const form = event.target;
-            const formId = form.id;
-            const submitButton = form.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.innerHTML;
-            
-            try {
-                // Cambiar texto del botón
-                submitButton.disabled = true;
-                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-                
-                // Crear objeto FormData
-                const formData = new FormData(form);
-                formData.append('form-type', formType);
-                
-                // Enviar datos a Formspree
-                const response = await fetch(FORMSPREE_ENDPOINT, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    // Mensaje de éxito
-                    showFeedback(formId, '¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.', true);
-                    
-                    // Resetear formulario después de 1 segundo
-                    setTimeout(() => {
-                        form.reset();
-                    }, 1000);
-                } else {
-                    throw new Error('Error en el servidor');
-                }
-            } catch (error) {
-                console.error('Error al enviar el formulario:', error);
-                showFeedback(formId, 'Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo.', false);
-            } finally {
-                // Restaurar botón
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalButtonText;
-            }
-        }
-        
-        // Configurar event listeners para formularios
-        document.getElementById('contactForm').addEventListener('submit', (e) => handleFormSubmit(e, 'contacto'));
-        document.getElementById('individualForm').addEventListener('submit', (e) => handleFormSubmit(e, 'needs-individual'));
-        document.getElementById('grupalForm').addEventListener('submit', (e) => handleFormSubmit(e, 'needs-grupal'));
-        document.getElementById('organizacionalForm').addEventListener('submit', (e) => handleFormSubmit(e, 'needs-organizacional'));
-    </script>
-
+       
     <!-- Botón de WhatsApp flotante -->
     <a href="https://wa.me/56934037274" 
        target="_blank" 
@@ -2318,6 +2244,4 @@ Mensaje: ${formData.get('contactMessage')}
   });
 </script>
 </body>
-
-
 </html>
