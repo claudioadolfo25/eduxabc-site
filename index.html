@@ -1,0 +1,3065 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eduxABC.com - Plataforma Estratégica de E-Learning | Cursos Certificados SENCE</title>
+    <meta name="description" content="Plataforma integral de capacitación empresarial con LMS Moodle, cursos certificados SENCE, sistema de e-commerce integrado con Flow.cl y escuela digital">
+    <meta name="keywords" content="eduxABC, capacitación empresarial, LMS, Moodle, e-learning, SENCE, Flow.cl, educación online, cursos certificados">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Flow.cl SDK -->
+    <script src="https://js.flow.cl/v1.js"></script>
+    
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --success-color: #10b981;
+            --quality-color: #8b5cf6;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --dark-color: #1f2937;
+            --light-color: #f8fafc;
+            --gray-color: #6b7280;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --gradient-hero: linear-gradient(135deg, #1e40af, #3b82f6, #60a5fa);
+            --gradient-accent: linear-gradient(135deg, #f59e0b, #f97316);
+            --gradient-sence: linear-gradient(135deg, #10b981, #047857);
+            --gradient-quality: linear-gradient(135deg, var(--quality-color), #7c3aed);
+            --border-radius: 16px;
+            
+            /* Colores corporativos de Google */
+            --google-blue: #4285F4;
+            --google-red: #EA4335;
+            --google-yellow: #FBBC05;
+            --google-green: #34A853;
+        }
+        
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body { 
+            line-height: 1.6; 
+            color: var(--dark-color); 
+            background-color: var(--white); 
+            overflow-x: hidden;
+        }
+        
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+        
+        /* Header con carrito de compras */
+        .header { 
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow); 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            z-index: 1000; 
+            transition: all 0.3s ease; 
+        }
+        
+        .header.scrolled { 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px); 
+        }
+        
+        .nav-container { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            height: 80px; 
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            text-decoration: none; 
+            gap: 12px; 
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 800;
+        }
+        
+        .logo-text { 
+            font-size: 28px; 
+            font-weight: 800; 
+            background: var(--gradient-primary); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text; 
+        }
+        
+        .logo-subtext { 
+            font-size: 11px; 
+            font-weight: 500; 
+            color: var(--gray-color); 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-top: -5px;
+        }
+        
+        .nav-menu { 
+            display: flex; 
+            list-style: none; 
+            gap: 32px; 
+            align-items: center; 
+        }
+        
+        .nav-link { 
+            text-decoration: none; 
+            color: var(--dark-color); 
+            font-weight: 500; 
+            transition: all 0.3s ease; 
+            position: relative; 
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+        
+        .nav-link:hover { 
+            color: var(--primary-color); 
+            background: rgba(37, 99, 235, 0.1);
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .cart-button {
+            position: relative;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .cart-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--danger-color);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .user-btn, .lms-btn {
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .user-btn:hover, .lms-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .lms-btn {
+            background: var(--gradient-accent);
+            border-color: var(--accent-color);
+            color: white;
+        }
+        
+        .lms-btn:hover {
+            background: var(--warning-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section con Carrusel */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            padding: 160px 0 80px;
+            overflow: hidden;
+        }
+        
+        .hero-slides {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        /* Diapositivas */
+        .slide-1 {
+            background: linear-gradient(rgba(66, 133, 244, 0.85), rgba(66, 133, 244, 0.8)), 
+                        url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+        }
+        
+        .slide-2 {
+            background: linear-gradient(rgba(234, 67, 53, 0.85), rgba(234, 67, 53, 0.8)), 
+                        url('https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+        }
+        
+        .slide-3 {
+            background: linear-gradient(rgba(251, 188, 5, 0.85), rgba(251, 188, 5, 0.8)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+        }
+        
+        .slide-4 {
+            background: linear-gradient(rgba(52, 168, 83, 0.85), rgba(52, 168, 83, 0.8)), 
+                        url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+        }
+        
+        .hero-content { 
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 24px;
+            line-height: 1.2;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.95;
+            font-weight: 400;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+        
+        .btn-primary { 
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 16px 32px; 
+            border-radius: var(--border-radius);
+            text-decoration: none; 
+            font-weight: 700; 
+            transition: all 0.3s ease; 
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: inline-flex; 
+            align-items: center; 
+            gap: 12px; 
+            font-size: 1.1rem;
+        }
+        
+        .btn-primary:hover { 
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px); 
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .btn-secondary { 
+            background: white;
+            color: var(--primary-color);
+            padding: 16px 32px; 
+            border-radius: var(--border-radius);
+            text-decoration: none; 
+            font-weight: 700; 
+            transition: all 0.3s ease; 
+            border: 2px solid white;
+            display: inline-flex; 
+            align-items: center; 
+            gap: 12px; 
+            font-size: 1.1rem;
+        }
+        
+        .btn-secondary:hover { 
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px); 
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .hero-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .hero-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-dots .dot.active {
+            background: var(--white);
+            transform: scale(1.2);
+        }
+        
+        /* Sección Misión, Visión, Valores y Calidad */
+        .mv-values {
+            padding: 100px 0;
+            background: var(--light-color);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 6px;
+            background: var(--gradient-primary);
+            border-radius: 3px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--gray-color);
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+        
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .mv-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+        
+        .mv-card.mision::before {
+            background: var(--primary-color);
+        }
+        
+        .mv-card.vision::before {
+            background: var(--accent-color);
+        }
+        
+        .mv-card.valores::before {
+            background: var(--success-color);
+        }
+        
+        .mv-card.calidad::before {
+            background: var(--quality-color);
+        }
+        
+        .mv-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+        }
+        
+        .mv-card.vision .mv-icon {
+            color: var(--accent-color);
+        }
+        
+        .mv-card.valores .mv-icon {
+            color: var(--success-color);
+        }
+        
+        .mv-card.calidad .mv-icon {
+            color: var(--quality-color);
+        }
+        
+        .mv-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .mv-card p {
+            color: var(--gray-color);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .values-list {
+            text-align: left;
+            margin-top: 20px;
+        }
+        
+        .values-list li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            list-style: none;
+        }
+        
+        .values-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+        }
+        
+        .certification-badge {
+            background: var(--gradient-quality);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        /* Sección de categorías */
+        .categories {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .category-icon {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .category-card:hover .category-icon::before {
+            transform: translateX(100%);
+        }
+        
+        .category-content {
+            padding: 30px;
+        }
+        
+        .category-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+        
+        .category-card p {
+            color: var(--gray-color);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .category-count {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        
+        .category-btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .category-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Catálogo de cursos */
+        .course-catalog {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+        
+        .catalog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .catalog-filters {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .search-box {
+            position: relative;
+            min-width: 300px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-color);
+            font-size: 1.2rem;
+        }
+        
+        .filter-select {
+            padding: 16px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            min-width: 200px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 40px;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .course-image {
+            height: 200px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .course-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--warning-color);
+            color: var(--dark-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+        }
+        
+        .course-content {
+            padding: 30px;
+        }
+        
+        .course-category {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .course-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+            color: var(--dark-color);
+            line-height: 1.4;
+        }
+        
+        .course-description {
+            color: var(--gray-color);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .course-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+        
+        .course-price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--dark-color);
+            margin-bottom: 24px;
+        }
+        
+        .course-price-original {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            color: var(--gray-color);
+            font-weight: 400;
+            margin-left: 8px;
+        }
+        
+        .course-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .add-to-cart {
+            flex: 2;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .add-to-cart:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .view-details {
+            flex: 1;
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .view-details:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        /* Sección LMS */
+        .lms-section { 
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe); 
+        }
+        
+        .lms-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 40px; 
+        }
+        
+        .lms-card { 
+            background: white; 
+            border-radius: var(--border-radius);
+            overflow: hidden; 
+            box-shadow: var(--shadow); 
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .lms-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .lms-icon { 
+            height: 200px; 
+            background: var(--gradient-primary); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 4rem; 
+            color: white; 
+        }
+        
+        .lms-content { 
+            padding: 30px; 
+        }
+        
+        .lms-card h3 { 
+            font-size: 1.5rem; 
+            font-weight: 800; 
+            color: var(--dark-color); 
+            margin-bottom: 16px; 
+        }
+        
+        .lms-card p { 
+            color: var(--gray-color); 
+            line-height: 1.7; 
+            margin-bottom: 24px; 
+            font-size: 1rem;
+        }
+        
+        .lms-btn {
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .lms-btn:hover {
+            background: var(--warning-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Sección Detección de Necesidades */
+        .needs-section { 
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f0fdfa, #ccfbf1); 
+        }
+        
+        .needs-form { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 40px; 
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow); 
+        }
+        
+        .tabs { 
+            display: flex; 
+            gap: 10px; 
+            margin-bottom: 30px; 
+            border-bottom: 1px solid #e5e7eb; 
+            padding-bottom: 10px; 
+        }
+        
+        .tab-btn { 
+            background: none; 
+            border: none; 
+            padding: 10px 20px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: 600; 
+            color: var(--gray-color); 
+            transition: all 0.3s ease; 
+        }
+        
+        .tab-btn.active { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        
+        .tab-content { 
+            display: none; 
+        }
+        
+        .tab-content.active { 
+            display: block; 
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+        
+        .form-textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 12px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+        
+        .form-textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+        
+        .form-feedback {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .form-feedback.success {
+            background-color: #d1fae5;
+            color: #065f46;
+            display: block;
+        }
+        
+        .form-feedback.error {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            display: block;
+        }
+        
+        .required-field::after {
+            content: "*";
+            color: var(--danger-color);
+            margin-left: 4px;
+        }
+        
+        /* Sección Franquicia SENCE */
+        .sence-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+        }
+        
+        .sence-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 60px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sence-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--gradient-sence);
+        }
+        
+        .sence-card h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--dark-color);
+            font-weight: 800;
+        }
+        
+        .sence-card p {
+            font-size: 1.1rem;
+            color: var(--gray-color);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        
+        .sence-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .sence-benefit {
+            background: #f0fdf7;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .sence-benefit:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .sence-benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-sence);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+        }
+        
+        .sence-benefit h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .sence-benefit p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+        
+        .sence-cta {
+            background: var(--gradient-sence);
+            color: white;
+            padding: 16px 32px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .sence-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Sección Clientes */
+        .clients-section {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .clients-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 40px;
+            padding: 30px 0;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+        
+        .clients-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .client-logo {
+            min-width: 180px;
+            height: 100px;
+            background: #f8fafc;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            padding: 15px;
+        }
+        
+        .client-logo img {
+            max-width: 100%;
+            max-height: 70px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+        
+        .client-logo:hover img {
+            filter: grayscale(0);
+        }
+        
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            cursor: pointer;
+        }
+        
+        .carousel-dot.active {
+            background: var(--primary-color);
+        }
+        
+        /* Sección Contacto */
+        .contact {
+            padding: 100px 0;
+            background: var(--light-color);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+        
+        .contact-icon {
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .contact-form {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Carrito de Compras */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 420px;
+            height: 100vh;
+            background: white;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+            z-index: 2000;
+            transition: right 0.4s ease;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .cart-modal.open {
+            right: 0;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            border-bottom: 2px solid #f1f5f9;
+            background: var(--light-color);
+        }
+        
+        .cart-header h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--dark-color);
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--gray-color);
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .close-cart:hover {
+            background: rgba(0,0,0,0.1);
+            color: var(--dark-color);
+        }
+        
+        .cart-items {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark-color);
+            font-size: 1.1rem;
+        }
+        
+        .cart-item-category {
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .cart-item-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 12px;
+        }
+        
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .quantity-btn {
+            width: 36px;
+            height: 36px;
+            background: #f8fafc;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .quantity-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .quantity-input {
+            width: 50px;
+            height: 36px;
+            border: none;
+            text-align: center;
+            font-weight: 600;
+            border-left: 1px solid #e5e7eb;
+            border-right: 1px solid #e5e7eb;
+        }
+        
+        .remove-item {
+            background: none;
+            border: none;
+            color: var(--danger-color);
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 8px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .remove-item:hover {
+            background: rgba(239, 68, 68, 0.1);
+        }
+        
+        .cart-summary {
+            padding: 30px;
+            border-top: 2px solid #f1f5f9;
+            background: var(--light-color);
+        }
+        
+        .cart-subtotal {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            padding-top: 12px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .checkout-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray-color);
+        }
+        
+        .empty-cart i {
+            font-size: 4rem;
+            margin-bottom: 24px;
+            color: #e5e7eb;
+        }
+        
+        .empty-cart h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--dark-color);
+        }
+        
+        /* Footer mejorado */
+        .footer {
+            background: var(--dark-color);
+            color: var(--white);
+            padding: 80px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--quality-color));
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .footer-links li:hover {
+            transform: translateX(5px);
+        }
+        
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.95rem;
+        }
+        
+        .certificate-badge {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.1);
+            color: #c4b5fd;
+            border: 1px solid var(--quality-color);
+            border-radius: 20px;
+            padding: 5px 15px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            width: 70px;
+            height: 70px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        .whatsapp-button i {
+            color: white;
+            font-size: 40px;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top { 
+            position: fixed; 
+            bottom: 100px; 
+            right: 30px; 
+            background: var(--gradient-primary); 
+            color: var(--white); 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-decoration: none; 
+            opacity: 0; 
+            visibility: hidden; 
+            transition: all 0.3s ease; 
+            z-index: 999; 
+            font-size: 1.2rem;
+        }
+        
+        .back-to-top.visible { 
+            opacity: 1; 
+            visibility: visible; 
+        }
+        
+        .back-to-top:hover { 
+            transform: translateY(-3px); 
+            box-shadow: var(--shadow-lg); 
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .nav-menu { 
+                position: fixed; 
+                top: 80px; 
+                left: -100%; 
+                width: 100%; 
+                height: calc(100vh - 80px); 
+                background: white; 
+                flex-direction: column; 
+                padding: 40px 20px; 
+                transition: all 0.4s ease;
+                gap: 20px;
+            }
+            
+            .nav-menu.active { 
+                left: 0; 
+            }
+            
+            .mobile-menu-btn { 
+                display: flex; 
+                flex-direction: column; 
+                gap: 6px;
+                cursor: pointer;
+                z-index: 1001;
+            }
+            
+            .mobile-menu-btn span {
+                width: 30px;
+                height: 3px;
+                background: var(--dark-color);
+                transition: all 0.3s ease;
+            }
+            
+            .mobile-menu-btn.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+            
+            .mobile-menu-btn.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .mobile-menu-btn.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+            
+            .hero-buttons { 
+                flex-direction: column; 
+                align-items: center; 
+            }
+            
+            .catalog-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .catalog-filters {
+                width: 100%;
+            }
+            
+            .search-box {
+                min-width: 100%;
+            margin-bottom: 15px;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-modal {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .cart-modal.open {
+                right: 0;
+            }
+            
+            .whatsapp-button {
+                bottom: 20px;
+                right: 20px;
+                width: 60px;
+                height: 60px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sence-card {
+                padding: 30px;
+            }
+            
+            .mv-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-section {
+                text-align: center;
+            }
+            
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .animate-slide-in {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--success-color);
+            color: white;
+            padding: 16px 30px;
+            border-radius: 12px;
+            font-weight: 600;
+            z-index: 3000;
+            box-shadow: var(--shadow-xl);
+            animation: slideIn 0.3s ease-out forwards;
+        }
+        
+        .text-center { 
+            text-align: center; 
+        }
+        
+        .mb-20 { 
+            margin-bottom: 20px; 
+        }
+        
+        .mt-30 { 
+            margin-top: 30px; 
+        }
+    </style>
+</head>
+<body>
+    <!-- Header con carrito de compras -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">ABC</div>
+                <div>
+                    <div class="logo-text">eduxABC</div>
+                    <div class="logo-subtext">Capacitación Inteligente</div>
+                </div>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#cursos" class="nav-link">Cursos</a></li>
+                <li><a href="#categorias" class="nav-link">Categorías</a></li>
+                <li><a href="#lms" class="nav-link">Plataforma LMS</a></li>
+                <li><a href="#needs" class="nav-link">Detección de Necesidades</a></li>
+                <li><a href="#sence" class="nav-link">Franquicia SENCE</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="cart-button" id="cartButton">
+                    <i class="fas fa-shopping-cart"></i> Carrito
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <a href="https://virtual-abc.com" class="lms-btn" target="_blank">
+                    <i class="fas fa-graduation-cap"></i> LMS
+                </a>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section con Carrusel -->
+    <section class="hero" id="inicio">
+        <!-- Diapositivas -->
+        <div class="hero-slides">
+            <!-- Diapositiva 1 - Azul Google -->
+            <div class="hero-slide slide-1 active">
+                <div class="hero-content">
+                    <h1>Transformamos Carreras con Capacitación Inteligente</h1>
+                    <p class="hero-subtitle">Plataforma integral con LMS Moodle + 5.0, análisis de ROI y herramientas de engagement para maximizar el aprendizaje</p>
+                    <div class="hero-buttons">
+                        <a href="#cursos" class="btn-primary">
+                            <i class="fas fa-graduation-cap"></i> Explorar Cursos
+                        </a>
+                        <a href="#sence" class="btn-secondary">
+                            <i class="fas fa-building"></i> Franquicia SENCE
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Diapositiva 2 - Rojo Google -->
+            <div class="hero-slide slide-2">
+                <div class="hero-content">
+                    <h1>Capacitación Certificada con Franquicia SENCE</h1>
+                    <p class="hero-subtitle">Aprovecha los beneficios tributarios y capacita a tu equipo con nuestros programas certificados por SENCE</p>
+                    <div class="hero-buttons">
+                        <a href="#cursos" class="btn-primary">
+                            <i class="fas fa-graduation-cap"></i> Explorar Cursos
+                        </a>
+                        <a href="#sence" class="btn-secondary">
+                            <i class="fas fa-building"></i> Franquicia SENCE
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Diapositiva 3 - Amarillo Google -->
+            <div class="hero-slide slide-3">
+                <div class="hero-content">
+                    <h1>Sistema de Gestión de Calidad Certificada</h1>
+                    <p class="hero-subtitle">Implementamos procesos bajo norma NCh 2728:2015 para garantizar la calidad de cada programa de formación</p>
+                    <div class="hero-buttons">
+                        <a href="#cursos" class="btn-primary">
+                            <i class="fas fa-graduation-cap"></i> Explorar Cursos
+                        </a>
+                        <a href="#sence" class="btn-secondary">
+                            <i class="fas fa-building"></i> Franquicia SENCE
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Diapositiva 4 - Verde Google -->
+            <div class="hero-slide slide-4">
+                <div class="hero-content">
+                    <h1>Soluciones a Medida para Empresas</h1>
+                    <p class="hero-subtitle">Diseñamos programas de capacitación adaptados a las necesidades específicas de tu organización</p>
+                    <div class="hero-buttons">
+                        <a href="#cursos" class="btn-primary">
+                            <i class="fas fa-graduation-cap"></i> Explorar Cursos
+                        </a>
+                        <a href="#sence" class="btn-secondary">
+                            <i class="fas fa-building"></i> Franquicia SENCE
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Puntos de navegación -->
+        <div class="hero-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+        </div>
+    </section>
+
+    <!-- Sección Misión, Visión, Valores y Calidad -->
+    <section class="mv-values">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Principios Fundamentales</h2>
+                <p class="section-subtitle">La base de nuestro compromiso con la excelencia en capacitación</p>
+            </div>
+            
+            <div class="mv-grid">
+                <div class="mv-card mision animate-fade-in-up">
+                    <div class="mv-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Misión</h3>
+                    <p>Transformar la capacitación profesional en Chile mediante soluciones tecnológicas innovadoras que potencien el desarrollo de competencias y habilidades para el futuro laboral.</p>
+                    <p>Facilitamos el aprendizaje continuo con herramientas accesibles y efectivas que se adaptan a las necesidades cambiantes del mercado.</p>
+                </div>
+                
+                <div class="mv-card vision animate-fade-in-up">
+                    <div class="mv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Visión</h3>
+                    <p>Ser líderes en innovación educativa en Latinoamérica para 2030, reconocidos por nuestra capacidad de integrar tecnología avanzada con metodologías pedagógicas efectivas.</p>
+                    <p>Visualizamos un ecosistema donde cada profesional pueda desarrollar su máximo potencial a través de nuestras plataformas y soluciones de capacitación.</p>
+                </div>
+                
+                <div class="mv-card valores animate-fade-in-up">
+                    <div class="mv-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Valores</h3>
+                    <p>Nuestro compromiso se fundamenta en principios que guían cada acción y decisión:</p>
+                    <ul class="values-list">
+                        <li><strong>Innovación constante:</strong> Buscamos siempre nuevas formas de mejorar el aprendizaje</li>
+                        <li><strong>Excelencia académica:</strong> Contenidos de calidad respaldados por especialistas</li>
+                        <li><strong>Accesibilidad:</strong> Educación de calidad disponible para todos los profesionales</li>
+                        <li><strong>Compromiso social:</strong> Contribuir al desarrollo del capital humano en Chile</li>
+                        <li><strong>Integridad:</strong> Transparencia en todas nuestras operaciones y relaciones</li>
+                    </ul>
+                </div>
+                
+                <div class="mv-card calidad animate-fade-in-up">
+                    <div class="mv-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Compromiso con la Calidad Certificada</h3>
+                    <p>Nos diferenciamos por adoptar un Sistema de Gestión de Calidad robusto y certificado bajo la norma <strong>NCh 2728:2015</strong>, garantizando procesos formativos eficaces, auditables y centrados en la mejora continua.</p>
+                    <p>Implementamos procesos de auditoría interna basados en la norma <strong>ISO 19011:2018</strong>, asegurando que cada programa de capacitación cumpla con estándares exigentes de planificación, ejecución, evaluación y retroalimentación.</p>
+                    
+                    <div class="certification-badge">
+                        <i class="fas fa-lock"></i> Confianza, calidad y mejora continua en cada curso
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de categorías de cursos -->
+    <section class="categories" id="categorias">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Explora Nuestras Categorías</h2>
+                <p class="section-subtitle">Cursos especializados en diferentes áreas de conocimiento</p>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card animate-fade-in">
+                    <div class="category-icon" style="background-color: #4285F4;">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="category-content">
+                        <span class="category-count">15 cursos</span>
+                        <h3>Tecnología & Digital</h3>
+                        <p>Cursos de transformación digital, programación, análisis de datos y nuevas tecnologías para profesionales modernos.</p>
+                        <button class="category-btn" data-category="tecnologia">
+                            <i class="fas fa-arrow-right"></i> Ver Cursos
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="category-card animate-fade-in">
+                    <div class="category-icon" style="background-color: #34A853;">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="category-content">
+                        <span class="category-count">12 cursos</span>
+                        <h3>Negocios & Gestión</h3>
+                        <p>Estrategias empresariales, finanzas, marketing digital y gestión de proyectos para líderes empresariales.</p>
+                        <button class="category-btn" data-category="negocios">
+                            <i class="fas fa-arrow-right"></i> Ver Cursos
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="category-card animate-fade-in">
+                    <div class="category-icon" style="background-color: #FBBC05;">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="category-content">
+                        <span class="category-count">10 cursos</span>
+                        <h3>Liderazgo & Habilidades</h3>
+                        <p>Desarrollo de liderazgo, comunicación efectiva, trabajo en equipo y habilidades blandas para profesionales.</p>
+                        <button class="category-btn" data-category="liderazgo">
+                            <i class="fas fa-arrow-right"></i> Ver Cursos
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="category-card animate-fade-in">
+                    <div class="category-icon" style="background-color: #EA4335;">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="category-content">
+                        <span class="category-count">8 cursos</span>
+                        <h3>Educación & Pedagogía</h3>
+                        <p>Metodologías de enseñanza, herramientas educativas y técnicas pedagógicas para educadores profesionales.</p>
+                        <button class="category-btn" data-category="educacion">
+                            <i class="fas fa-arrow-right"></i> Ver Cursos
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo de Cursos -->
+    <section class="course-catalog" id="cursos">
+        <div class="container">
+            <div class="catalog-header">
+                <h2 class="section-title">Nuestros Cursos Destacados</h2>
+                <div class="catalog-filters">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar cursos..." id="searchInput">
+                    </div>
+                    <select class="filter-select" id="categoryFilter">
+                        <option value="">Todas las categorías</option>
+                        <option value="tecnologia">Tecnología & Digital</option>
+                        <option value="negocios">Negocios & Gestión</option>
+                        <option value="liderazgo">Liderazgo & Habilidades</option>
+                        <option value="educacion">Educación & Pedagogía</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="courses-grid" id="coursesGrid">
+                <!-- Los cursos se cargarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección LMS -->
+    <section class="lms-section" id="lms">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Sistema de Gestión de Aprendizaje (LMS)</h2>
+                <p class="section-subtitle">Nuestra plataforma avanzada, basada en Moodle + 5.0, ofrece todas las herramientas necesarias para una experiencia de aprendizaje completa</p>
+            </div>
+            <div class="lms-grid">
+                <div class="lms-card animate-fade-in">
+                    <div class="lms-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="lms-content">
+                        <h3>Portal del Estudiante</h3>
+                        <p>Acceso a todos tus cursos, progreso, certificados y recursos en un solo lugar con una interfaz intuitiva y fácil de usar.</p>
+                        <a href="https://virtual-abc.com" class="lms-btn" target="_blank">
+                            <i class="fas fa-sign-in-alt"></i> Acceder Ahora
+                        </a>
+                    </div>
+                </div>
+                <div class="lms-card animate-fade-in">
+                    <div class="lms-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="lms-content">
+                        <h3>Biblioteca de Recursos</h3>
+                        <p>Materiales descargables, videos, presentaciones interactivas y guías prácticas para complementar tu aprendizaje.</p>
+                        <a href="https://virtual-abc.com" class="lms-btn" target="_blank">
+                            <i class="fas fa-download"></i> Explorar Recursos
+                        </a>
+                    </div>
+                </div>
+                <div class="lms-card animate-fade-in">
+                    <div class="lms-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="lms-content">
+                        <h3>Evaluaciones Certificadas</h3>
+                        <p>Exámenes interactivos con retroalimentación inmediata y generación automática de certificados validados.</p>
+                        <a href="https://virtual-abc.com" class="lms-btn" target="_blank">
+                            <i class="fas fa-clipboard-check"></i> Ver Evaluaciones
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Detección de Necesidades -->
+    <section class="needs-section" id="needs">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Detección de Necesidades de Capacitación</h2>
+                <p class="section-subtitle">Identificamos las brechas de conocimiento en su organización para crear programas de formación efectivos</p>
+            </div>
+            
+            <div class="needs-form">
+                <h3 class="text-center mb-20">Diagnóstico de Capacitación</h3>
+                
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="individual">Individual</button>
+                    <button class="tab-btn" data-tab="grupal">Grupal</button>
+                    <button class="tab-btn" data-tab="organizacional">Organizacional</button>
+                </div>
+                
+                <div class="tab-content active" id="individual">
+                    <form id="individualForm">
+                        <div class="form-group">
+                            <label for="employeeName" class="form-label required-field">Nombre del Colaborador</label>
+                            <input type="text" id="employeeName" name="employeeName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="employeePosition" class="form-label required-field">Cargo Actual</label>
+                            <input type="text" id="employeePosition" name="employeePosition" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="employeeSkills" class="form-label required-field">Habilidades Requeridas para su Cargo</label>
+                            <textarea id="employeeSkills" name="employeeSkills" class="form-textarea" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="employeeGaps" class="form-label required-field">Brechas Identificadas</label>
+                            <textarea id="employeeGaps" name="employeeGaps" class="form-textarea" required></textarea>
+                        </div>
+                        <div class="form-feedback" id="individualFeedback"></div>
+                        <button type="submit" class="btn-primary" style="width: 100%;">
+                            <i class="fas fa-clipboard-list"></i> Evaluar Necesidades
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="tab-content" id="grupal">
+                    <form id="grupalForm">
+                        <div class="form-group">
+                            <label for="department" class="form-label required-field">Departamento/Área</label>
+                            <input type="text" id="department" name="department" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentGoals" class="form-label required-field">Objetivos del Departamento</label>
+                            <textarea id="departmentGoals" name="departmentGoals" class="form-textarea" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentChallenges" class="form-label required-field">Principales Desafíos</label>
+                            <textarea id="departmentChallenges" name="departmentChallenges" class="form-textarea" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentSkills" class="form-label required-field">Habilidades Requeridas</label>
+                            <textarea id="departmentSkills" name="departmentSkills" class="form-textarea" required></textarea>
+                        </div>
+                        <div class="form-feedback" id="grupalFeedback"></div>
+                        <button type="submit" class="btn-primary" style="width: 100%;">
+                            <i class="fas fa-clipboard-list"></i> Evaluar Necesidades
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="tab-content" id="organizacional">
+                    <form id="organizacionalForm">
+                        <div class="form-group">
+                            <label for="companyName" class="form-label required-field">Nombre de la Empresa</label>
+                            <input type="text" id="companyName" name="companyName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="companySize" class="form-label required-field">Tamaño de la Empresa</label>
+                            <input type="text" id="companySize" name="companySize" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="companyGoals" class="form-label required-field">Objetivos Estratégicos</label>
+                            <textarea id="companyGoals" name="companyGoals" class="form-textarea" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="companyChallenges" class="form-label required-field">Principales Desafíos Organizacionales</label>
+                            <textarea id="companyChallenges" name="companyChallenges" class="form-textarea" required></textarea>
+                        </div>
+                        <div class="form-feedback" id="organizacionalFeedback"></div>
+                        <button type="submit" class="btn-primary" style="width: 100%;">
+                            <i class="fas fa-clipboard-list"></i> Evaluar Necesidades
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    <!-- Sección Franquicia SENCE -->
+    <section class="sence-section" id="sence">
+        <div class="container">
+            <div class="sence-card animate-fade-in">
+                <h2>Franquicia Tributaria SENCE</h2>
+                <p>Aproveche los beneficios fiscales para capacitar a su personal con nuestros programas certificados por SENCE. Recupere hasta el 1% de sus impuestos anuales invirtiendo en el desarrollo profesional de su equipo.</p>
+                
+                <div class="sence-benefits">
+                    <div class="sence-benefit animate-slide-in">
+                        <div class="sence-benefit-icon">
+                            <i class="fas fa-percent"></i>
+                        </div>
+                        <h4>Hasta 1% de los impuestos</h4>
+                        <p>Las empresas pueden descontar hasta el 1% de los impuestos anuales por concepto de capacitación.</p>
+                    </div>
+                    
+                    <div class="sence-benefit animate-slide-in">
+                        <div class="sence-benefit-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h4>Cursos Certificados</h4>
+                        <p>Todos nuestros programas están certificados y reconocidos por SENCE para su uso con la franquicia tributaria.</p>
+                    </div>
+                    
+                    <div class="sence-benefit animate-slide-in">
+                        <div class="sence-benefit-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h4>Proceso Simplificado</h4>
+                        <p>Gestión completa del proceso de facturación y documentación requerida por SENCE para su tranquilidad.</p>
+                    </div>
+                    
+                    <div class="sence-benefit animate-slide-in">
+                        <div class="sence-benefit-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Retorno de Inversión</h4>
+                        <p>Mejore la productividad de su empresa mientras recupera parte de su inversión en capacitación.</p>
+                    </div>
+                </div>
+                
+                <a href="#contacto" class="sence-cta">
+                    <i class="fas fa-file-alt"></i> Solicitar Información SENCE
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Clientes -->
+    <section class="clients-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Empresas y Organismos Públicos que Confían en Nosotros</h2>
+                <p class="section-subtitle">Más de 100 organizaciones han transformado su capacitación con eduxABC.com</p>
+            </div>
+            
+            <div class="clients-carousel" id="clientsCarousel">
+                <div class="client-logo">
+                    <div style="font-size: 1.5rem; color: #2563eb; font-weight: 700;">Municipalidad de Lonquimay</div>
+                </div>
+                <div class="client-logo">
+                    <div style="font-size: 1.5rem; color: #2563eb; font-weight: 700;">Municipalidad de Temuco</div>
+                </div>
+                <div class="client-logo">
+                    <div style="font-size: 1.5rem; color: #2563eb; font-weight: 700;">Municipalidad de Curarrehue</div>
+                </div>
+                <div class="client-logo">
+                    <div style="font-size: 1.5rem; color: #2563eb; font-weight: 700;">Programa Mujeres Jefas de Hogar</div>
+                </div>
+                <div class="client-logo">
+                    <div style="font-size: 1.5rem; color: #2563eb; font-weight: 700;">INDAP</div>
+                </div>
+                <div class="client-logo">
+                    <div style="font-size: 1.5rem; color: #2563eb; font-weight: 700;">CONADI</div>
+                </div>
+                <div class="client-logo">
+                    <div style="font-size: 1.5rem; color: #2563eb; font-weight: 700;">CONSULTORA GEA</div>
+                </div>
+                <div class="client-logo">
+                    <div style="font-size: 1.5rem; color: #2563eb; font-weight: 700;">CONSULTORA NAA</div>
+                </div>
+            </div>
+            
+            <div class="carousel-nav">
+                <div class="carousel-dot active" data-index="0"></div>
+                <div class="carousel-dot" data-index="1"></div>
+                <div class="carousel-dot" data-index="2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contáctanos</h2>
+                <p class="section-subtitle">¿Tienes preguntas o necesitas más información? Escríbenos</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Comunícate con nosotros</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon" style="background-color: #25D366;">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p>+56 9 3403 7274</p>
+                            <p>Atendemos de Lunes a Jueves: 14:00 - 18:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon" style="background-color: var(--primary-color);">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>abc.cec.spa@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon" style="background-color: var(--quality-color);">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div>
+                            <h4>Franquicia SENCE</h4>
+                            <p>Organismo certificado con código: *****-2024</p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-30">
+                        <a href="https://wa.me/56934037274" class="btn-primary" style="background-color: #25D366;">
+                            <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 class="text-center mb-20">Envíanos un mensaje</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName" class="form-label required-field">Nombre completo</label>
+                            <input type="text" id="contactName" name="contactName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail" class="form-label required-field">Correo electrónico</label>
+                            <input type="email" id="contactEmail" name="contactEmail" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage" class="form-label required-field">Mensaje</label>
+                            <textarea id="contactMessage" name="contactMessage" class="form-textarea" required></textarea>
+                        </div>
+                        <div class="form-feedback" id="contactFeedback"></div>
+                        <button type="submit" class="btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Enviar mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer mejorado -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Sobre eduxABC</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+                        <li><a href="#lms"><i class="fas fa-graduation-cap"></i> Plataforma LMS</a></li>
+                        <li><a href="#sence"><i class="fas fa-building"></i> Franquicia SENCE</a></li>
+                        <li><a href="#needs"><i class="fas fa-search"></i> Diagnóstico de Capacitación</a></li>
+                        <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Cursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#cursos"><i class="fas fa-book"></i> Catálogo</a></li>
+                        <li><a href="#categorias"><i class="fas fa-tags"></i> Categorías</a></li>
+                        <li><a href="#lms"><i class="fas fa-user-graduate"></i> Portal del Estudiante</a></li>
+                        <li><a href="#lms"><i class="fas fa-book-open"></i> Biblioteca de Recursos</a></li>
+                        <li><a href="#lms"><i class="fas fa-clipboard-check"></i> Evaluaciones Certificadas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-file-contract"></i> Términos y Condiciones</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Política de Privacidad</a></li>
+                        <li><a href="#"><i class="fas fa-cookie-bite"></i> Política de Cookies</a></li>
+                        <li><a href="#"><i class="fas fa-certificate"></i> Certificaciones</a></li>
+                        <li><a href="#"><i class="fas fa-exclamation-circle"></i> Reclamos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:abc.cec.spa@gmail.com"><i class="fas fa-envelope"></i> abc.cec.spa@gmail.com</a></li>
+                        <li><a href="https://wa.me/56934037274"><i class="fab fa-whatsapp"></i> +56 9 3403 7274</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Temuco, Región de La Araucanía, Chile</a></li>
+                        <li><a href="#"><i class="fas fa-certificate"></i> Franquicia SENCE: *****-2024</a></li>
+                    </ul>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 eduxABC.com - Todos los derechos reservados.</p>
+                <p class="certificate-badge">
+                    <i class="fas fa-lock"></i> Plataforma certificada bajo norma NCh 2728:2015
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Carrito de Compras -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h2>Tu Carrito de Cursos</h2>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Los artículos del carrito se cargarán dinámicamente -->
+        </div>
+        <div class="cart-summary" id="cartSummary">
+            <div class="cart-subtotal">
+                <span>Subtotal:</span>
+                <span id="cartSubtotal">$0</span>
+            </div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0</span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">
+                <i class="fas fa-lock"></i> Proceder al Pago
+            </button>
+        </div>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/56934037274" class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <a href="#inicio" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- JavaScript -->
+    <script>
+        // Datos de ejemplo de cursos
+        const courses = [
+            {
+                id: 1,
+                title: "Transformación Digital para Empresas",
+                category: "tecnologia",
+                description: "Aprende las estrategias clave para liderar la transformación digital en tu organización y adaptarte al mercado actual.",
+                duration: "40 horas",
+                level: "Intermedio",
+                price: 299000,
+                originalPrice: 349000,
+                badge: "Popular",
+                icon: "fas fa-laptop-code"
+            },
+            {
+                id: 2,
+                title: "Análisis de Datos con Power BI",
+                category: "tecnologia",
+                description: "Domina técnicas avanzadas de análisis de datos para la toma de decisiones estratégicas en tu organización.",
+                duration: "36 horas",
+                level: "Avanzado",
+                price: 349000,
+                badge: "Nuevo",
+                icon: "fas fa-chart-line"
+            },
+            {
+                id: 3,
+                title: "Liderazgo Estratégico y Gestión de Equipos",
+                category: "liderazgo",
+                description: "Desarrolla habilidades para liderar equipos de alto rendimiento en entornos desafiantes y cambiantes.",
+                duration: "32 horas",
+                level: "Intermedio",
+                price: 249000,
+                icon: "fas fa-users"
+            },
+            {
+                id: 4,
+                title: "Gestión de Proyectos con Metodologías Ágiles",
+                category: "negocios",
+                description: "Aprende metodologías ágiles y tradicionales para gestionar proyectos con éxito en cualquier tipo de organización.",
+                duration: "35 horas",
+                level: "Intermedio",
+                price: 279000,
+                icon: "fas fa-project-diagram"
+            },
+            {
+                id: 5,
+                title: "Marketing Digital y Redes Sociales",
+                category: "negocios",
+                description: "Estrategias efectivas de marketing digital, SEO, SEM y gestión de redes sociales para potenciar tu negocio.",
+                duration: "30 horas",
+                level: "Principiante",
+                price: 229000,
+                originalPrice: 279000,
+                badge: "Oferta",
+                icon: "fas fa-hashtag"
+            },
+            {
+                id: 6,
+                title: "Diseño Instruccional para E-Learning",
+                category: "educacion",
+                description: "Técnicas avanzadas de diseño instruccional para crear experiencias de aprendizaje online efectivas y atractivas.",
+                duration: "38 horas",
+                level: "Intermedio",
+                price: 259000,
+                icon: "fas fa-book"
+            }
+        ];
+
+        // Variables globales
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartButton = document.getElementById('cartButton');
+        const cartCount = document.getElementById('cartCount');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartModal = document.getElementById('cartModal');
+        const closeCart = document.getElementById('closeCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartSubtotal = document.getElementById('cartSubtotal');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const coursesGrid = document.getElementById('coursesGrid');
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const backToTop = document.getElementById('backToTop');
+        const contactForm = document.getElementById('contactForm');
+        const contactFeedback = document.getElementById('contactFeedback');
+
+        // Inicializar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+            renderCourses(courses);
+            initHeroCarousel();
+            
+            // Event listeners
+            cartButton.addEventListener('click', openCart);
+            cartOverlay.addEventListener('click', closeCart);
+            closeCart.addEventListener('click', closeCart);
+            checkoutBtn.addEventListener('click', processCheckout);
+            searchInput.addEventListener('input', filterCourses);
+            categoryFilter.addEventListener('change', filterCourses);
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            window.addEventListener('scroll', handleScroll);
+            
+            // Eventos para botones de categoría
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.getAttribute('data-category');
+                    categoryFilter.value = category;
+                    filterCourses();
+                    
+                    // Desplazarse a la sección de cursos
+                    document.getElementById('cursos').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Eventos para pestañas de detección de necesidades
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    button.classList.add('active');
+                    const tabId = button.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Evento para formulario de contacto
+            if (contactForm) {
+                contactForm.addEventListener('submit', handleContactSubmit);
+            }
+            
+            // Inicializar carrusel de clientes
+            initClientsCarousel();
+        });
+
+        // Renderizar cursos
+        function renderCourses(coursesList) {
+            coursesGrid.innerHTML = '';
+            
+            if (coursesList.length === 0) {
+                coursesGrid.innerHTML = `
+                    <div class="empty-cart" style="grid-column: 1 / -1;">
+                        <i class="fas fa-search" style="color: #e5e7eb;"></i>
+                        <h3>No se encontraron cursos</h3>
+                        <p>Intenta con otra búsqueda o selecciona una categoría diferente</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            coursesList.forEach(course => {
+                const courseCard = document.createElement('div');
+                courseCard.className = 'course-card';
+                courseCard.innerHTML = `
+                    <div class="course-image">
+                        <i class="${course.icon}"></i>
+                        ${course.badge ? `<span class="course-badge">${course.badge}</span>` : ''}
+                    </div>
+                    <div class="course-content">
+                        <div class="course-category">${getCategoryName(course.category)}</div>
+                        <h3>${course.title}</h3>
+                        <p class="course-description">${course.description}</p>
+                        <div class="course-meta">
+                            <span class="course-meta-item"><i class="far fa-clock"></i> ${course.duration}</span>
+                            <span class="course-meta-item"><i class="fas fa-signal"></i> ${course.level}</span>
+                        </div>
+                        <div class="course-price">
+                            $${course.price.toLocaleString('es-CL')}
+                            ${course.originalPrice ? `<span class="course-price-original">$${course.originalPrice.toLocaleString('es-CL')}</span>` : ''}
+                        </div>
+                        <div class="course-actions">
+                            <button class="add-to-cart" data-id="${course.id}">
+                                <i class="fas fa-cart-plus"></i> Agregar
+                            </button>
+                            <button class="view-details">
+                                <i class="fas fa-info-circle"></i> Detalles
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                coursesGrid.appendChild(courseCard);
+                
+                // Agregar evento al botón de carrito
+                courseCard.querySelector('.add-to-cart').addEventListener('click', () => {
+                    addToCart(course);
+                });
+            });
+        }
+
+        // Filtrar cursos
+        function filterCourses() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const category = categoryFilter.value;
+            
+            const filteredCourses = courses.filter(course => {
+                const matchesSearch = course.title.toLowerCase().includes(searchTerm) || 
+                                     course.description.toLowerCase().includes(searchTerm);
+                const matchesCategory = category === '' || course.category === category;
+                return matchesSearch && matchesCategory;
+            });
+            
+            renderCourses(filteredCourses);
+        }
+
+        // Obtener nombre de categoría
+        function getCategoryName(categoryKey) {
+            const categories = {
+                tecnologia: "Tecnología & Digital",
+                negocios: "Negocios & Gestión",
+                liderazgo: "Liderazgo & Habilidades",
+                educacion: "Educación & Pedagogía"
+            };
+            return categories[categoryKey] || categoryKey;
+        }
+
+        // Funciones del carrito
+        function addToCart(course) {
+            const existingItem = cart.find(item => item.id === course.id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: course.id,
+                    title: course.title,
+                    category: course.category,
+                    price: course.price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            openCart();
+            
+            // Mostrar notificación
+            showNotification(`${course.title} agregado al carrito`);
+        }
+
+        function updateCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCartItems();
+        }
+
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+        }
+
+        function openCart() {
+            cartOverlay.classList.add('active');
+            cartModal.classList.add('open');
+            renderCartItems();
+        }
+
+        function closeCart() {
+            cartOverlay.classList.remove('active');
+            cartModal.classList.remove('open');
+        }
+
+        function renderCartItems() {
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Tu carrito está vacío</h3>
+                        <p>Agrega cursos para comenzar</p>
+                    </div>
+                `;
+                cartSummary.style.display = 'none';
+                return;
+            }
+            
+            cartItems.innerHTML = '';
+            cartSummary.style.display = 'block';
+            
+            let subtotal = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image">
+                        <i class="${courses.find(c => c.id === item.id)?.icon || 'fas fa-book'}"></i>
+                    </div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.title}</div>
+                        <div class="cart-item-category">${getCategoryName(item.category)}</div>
+                        <div class="cart-item-price">$${item.price.toLocaleString('es-CL')} x ${item.quantity}</div>
+                        <div class="cart-item-actions">
+                            <div class="quantity-control">
+                                <button class="quantity-btn decrease" data-id="${item.id}">-</button>
+                                <input type="text" class="quantity-input" value="${item.quantity}" readonly>
+                                <button class="quantity-btn increase" data-id="${item.id}">+</button>
+                            </div>
+                            <button class="remove-item" data-id="${item.id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                cartItems.appendChild(cartItem);
+                
+                // Eventos para los botones
+                cartItem.querySelector('.decrease').addEventListener('click', () => {
+                    updateQuantity(item.id, -1);
+                });
+                
+                cartItem.querySelector('.increase').addEventListener('click', () => {
+                    updateQuantity(item.id, 1);
+                });
+                
+                cartItem.querySelector('.remove-item').addEventListener('click', () => {
+                    removeItem(item.id);
+                });
+            });
+            
+            // Actualizar totales
+            const total = subtotal;
+            cartSubtotal.textContent = `$${subtotal.toLocaleString('es-CL')}`;
+            cartTotal.textContent = `$${total.toLocaleString('es-CL')}`;
+        }
+
+        function updateQuantity(id, change) {
+            const item = cart.find(item => item.id === id);
+            if (!item) return;
+            
+            item.quantity += change;
+            
+            if (item.quantity <= 0) {
+                cart = cart.filter(item => item.id !== id);
+            }
+            
+            updateCart();
+        }
+
+        function removeItem(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+            showNotification('Curso eliminado del carrito');
+        }
+
+        // Procesar compra con Flow.cl
+        function processCheckout() {
+            if (cart.length === 0) {
+                showNotification('Tu carrito está vacío', 'error');
+                return;
+            }
+            
+            // Crear la orden de compra
+            const orderNumber = `ORD-${Date.now()}`;
+            const orderTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            
+            const order = {
+                commerceOrder: orderNumber,
+                subject: "Compra de cursos en eduxABC.com",
+                amount: orderTotal,
+                email: "cliente@ejemplo.com",
+                urlConfirmation: "https://eduxabc.com/confirmacion",
+                urlReturn: "https://eduxabc.com/retorno",
+                optional: {
+                    cart: JSON.stringify(cart)
+                }
+            };
+            
+            // Crear la instancia de Flow
+            const flow = new Flow({
+                apiKey: 'TU_API_KEY_DE_FLOW_CL' // Reemplazar con tu API key real
+            });
+            
+            // Crear la orden en Flow
+            flow.createOrder(order, function(response) {
+                if (response.token) {
+                    // Redirigir al cliente a Flow para el pago
+                    window.location.href = response.url + "?token=" + response.token;
+                } else {
+                    showNotification('Error al crear la orden de pago', 'error');
+                    console.error(response);
+                }
+            });
+        }
+
+        // Mostrar notificación
+        function showNotification(message, type = 'success') {
+            // Crear elemento de notificación
+            const notification = document.createElement('div');
+            notification.className = `notification ${type === 'error' ? 'error' : ''}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: ${type === 'error' ? 'var(--danger-color)' : 'var(--success-color)'};
+                color: white;
+                padding: 16px 30px;
+                border-radius: 12px;
+                font-weight: 600;
+                z-index: 3000;
+                animation: slideIn 0.3s ease-out forwards;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Eliminar después de 3 segundos
+            setTimeout(() => {
+                notification.style.animation = 'fadeOut 0.3s ease-out forwards';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+            
+            // Agregar estilos de animación
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { bottom: -100px; opacity: 0; }
+                    to { bottom: 30px; opacity: 1; }
+                }
+                @keyframes fadeOut {
+                    from { opacity: 1; }
+                    to { opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Menú móvil
+        function toggleMobileMenu() {
+            mobileMenuBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        }
+        
+        // Carrusel hero
+        function initHeroCarousel() {
+            const heroSlides = document.querySelectorAll('.hero-slide');
+            const heroDots = document.querySelectorAll('.hero-dots .dot');
+            let heroCurrentIndex = 0;
+            let heroInterval;
+            
+            function showHeroSlide(index) {
+                heroSlides.forEach(slide => slide.classList.remove('active'));
+                heroDots.forEach(dot => dot.classList.remove('active'));
+                
+                heroSlides[index].classList.add('active');
+                heroDots[index].classList.add('active');
+                heroCurrentIndex = index;
+            }
+            
+            function startHeroCarousel() {
+                heroInterval = setInterval(() => {
+                    let nextIndex = (heroCurrentIndex + 1) % heroSlides.length;
+                    showHeroSlide(nextIndex);
+                }, 5000);
+            }
+            
+            heroDots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    clearInterval(heroInterval);
+                    const index = parseInt(this.getAttribute('data-index'));
+                    showHeroSlide(index);
+                    startHeroCarousel();
+                });
+            });
+            
+            // Iniciar el carrusel
+            startHeroCarousel();
+        }
+        
+        // Carrusel clientes
+        function initClientsCarousel() {
+            const carousel = document.getElementById('clientsCarousel');
+            const dots = document.querySelectorAll('.carousel-dot');
+            let currentIndex = 0;
+            
+            function updateCarousel() {
+                const scrollPosition = currentIndex * 220;
+                carousel.scrollTo({
+                    left: scrollPosition,
+                    behavior: 'smooth'
+                });
+                
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+            
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    currentIndex = parseInt(this.getAttribute('data-index'));
+                    updateCarousel();
+                });
+            });
+            
+            // Auto rotate carousel
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % dots.length;
+                updateCarousel();
+            }, 5000);
+        }
+        
+        // Scroll handler
+        function handleScroll() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Back to top button
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+        
+        // Formulario de contacto
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            
+            // Mostrar mensaje de "enviando"
+            contactFeedback.className = "form-feedback";
+            contactFeedback.textContent = "Enviando mensaje...";
+            contactFeedback.style.display = "block";
+            
+            // Simular envío
+            setTimeout(() => {
+                contactFeedback.className = "form-feedback success";
+                contactFeedback.textContent = "✅ Mensaje enviado correctamente. ¡Gracias por contactarnos!";
+                contactForm.reset();
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
