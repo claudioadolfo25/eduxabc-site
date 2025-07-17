@@ -1476,9 +1476,7 @@
         </div>
     </section>
 
-    <!-- Detección de Necesidades Section - FORMULARIOS OPTIMIZADOS -->
-    <section class="needs-section" id="needs">
-        <div class="container">
+<section class="needs-section" id="needs">
             <div class="section-header">
                 <h2 class="section-title">Detección de Necesidades de Capacitación</h2>
                 <p class="section-subtitle">Identificamos las brechas de conocimiento en su organización para crear programas de formación efectivos</p>
@@ -1546,20 +1544,20 @@
                 <div class="tab-content" id="organizacional">
                     <form id="organizacionalForm">
                         <div class="form-group">
-                            <label for="orgStrategy" class="form-label required-field">Estrategia Organizacional</label>
-                            <textarea id="orgStrategy" name="orgStrategy" class="form-textarea" required></textarea>
+                            <label for="companyName" class="form-label required-field">Nombre de la Empresa</label>
+                            <input type="text" id="companyName" name="companyName" class="form-input" required>
                         </div>
                         <div class="form-group">
-                            <label for="orgGoals" class="form-label required-field">Objetivos Estratégicos</label>
-                            <textarea id="orgGoals" name="orgGoals" class="form-textarea" required></textarea>
+                            <label for="companySize" class="form-label required-field">Tamaño de la Empresa</label>
+                            <input type="text" id="companySize" name="companySize" class="form-input" required>
                         </div>
                         <div class="form-group">
-                            <label for="orgChallenges" class="form-label required-field">Desafíos Corporativos</label>
-                            <textarea id="orgChallenges" name="orgChallenges" class="form-textarea" required></textarea>
+                            <label for="companyGoals" class="form-label required-field">Objetivos Estratégicos</label>
+                            <textarea id="companyGoals" name="companyGoals" class="form-textarea" required></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="orgSkills" class="form-label required-field">Competencias Organizacionales Requeridas</label>
-                            <textarea id="orgSkills" name="orgSkills" class="form-textarea" required></textarea>
+                            <label for="companyChallenges" class="form-label required-field">Principales Desafíos Organizacionales</label>
+                            <textarea id="companyChallenges" name="companyChallenges" class="form-textarea" required></textarea>
                         </div>
                         <div class="form-feedback" id="organizacionalFeedback"></div>
                         <button type="submit" class="btn-primary" style="width: 100%;">
@@ -1568,8 +1566,7 @@
                     </form>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
     <!-- Franquicia SENCE Section -->
     <section class="sence-section" id="sence">
@@ -1808,9 +1805,7 @@
         </div>
     </section>
 
-    <!-- Contact Section - FORMULARIO OPTIMIZADO -->
-    <section class="contact" id="contacto">
-        <div class="container">
+<section class="contact" id="contacto">
             <div class="section-header">
                 <h2 class="section-title">Contáctanos</h2>
                 <p class="section-subtitle">¿Tienes preguntas o necesitas más información? Escríbenos</p>
@@ -1871,38 +1866,38 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="contactName" class="form-label required-field">Nombre completo</label>
-                                <input type="text" id="contactName" name="name" class="form-input" required>
+                                <input type="text" id="contactName" name="contactName" class="form-input" required>
                             </div>
                             <div class="form-group">
                                 <label for="contactEmail" class="form-label required-field">Correo electrónico</label>
-                                <input type="email" id="contactEmail" name="email" class="form-input" required>
+                                <input type="email" id="contactEmail" name="contactEmail" class="form-input" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="contactSubject" class="form-label required-field">Asunto</label>
-                            <input type="text" id="contactSubject" name="subject" class="form-input" required>
+                            <input type="text" id="contactSubject" name="contactSubject" class="form-input" required>
                         </div>
                         <div class="form-group">
                             <label for="contactMessage" class="form-label required-field">Mensaje</label>
-                            <textarea id="contactMessage" name="message" class="form-textarea" required></textarea>
+                            <textarea id="contactMessage" name="contactMessage" class="form-textarea" required></textarea>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Áreas de interés</label>
                             <div class="checkbox-group">
                                 <div class="checkbox-item">
-                                    <input type="checkbox" id="interestLms" name="interest[]" value="Plataforma LMS">
+                                    <input type="checkbox" id="interestLms" name="interest" value="Plataforma LMS">
                                     <label for="interestLms">Plataforma LMS</label>
                                 </div>
                                 <div class="checkbox-item">
-                                    <input type="checkbox" id="interestSence" name="interest[]" value="Franquicia SENCE">
+                                    <input type="checkbox" id="interestSence" name="interest" value="Franquicia SENCE">
                                     <label for="interestSence">Franquicia SENCE</label>
                                 </div>
                                 <div class="checkbox-item">
-                                    <input type="checkbox" id="interestCourses" name="interest[]" value="Cursos">
+                                    <input type="checkbox" id="interestCourses" name="interest" value="Cursos">
                                     <label for="interestCourses">Cursos</label>
                                 </div>
                                 <div class="checkbox-item">
-                                    <input type="checkbox" id="interestNeeds" name="interest[]" value="Detección de Necesidades">
+                                    <input type="checkbox" id="interestNeeds" name="interest" value="Detección de Necesidades">
                                     <label for="interestNeeds">Detección de Necesidades</label>
                                 </div>
                             </div>
@@ -1914,8 +1909,170 @@
                     </form>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
+
+    <script>
+        // Inicializar EmailJS
+        emailjs.init("TU_PUBLIC_KEY"); // Reemplaza con tu Public Key de EmailJS
+
+        // Funcionalidad de tabs
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetTab = this.dataset.tab;
+                
+                // Remover clase active de todos los botones y contenidos
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                
+                // Agregar clase active al botón clickeado y su contenido
+                this.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+
+        // Función para mostrar feedback
+        function showFeedback(feedbackElement, type, message) {
+            feedbackElement.className = `form-feedback ${type}`;
+            feedbackElement.innerHTML = type === 'loading' ? 
+                `<div class="loading-spinner"></div> ${message}` : 
+                message;
+        }
+
+        // Función para obtener áreas de interés seleccionadas
+        function getSelectedInterests() {
+            const checkboxes = document.querySelectorAll('input[name="interest"]:checked');
+            return Array.from(checkboxes).map(cb => cb.value).join(', ');
+        }
+
+        // Función para enviar email
+        function sendEmail(templateParams, feedbackElement, successMessage) {
+            showFeedback(feedbackElement, 'loading', 'Enviando mensaje...');
+            
+            emailjs.send('service_exxl1od', 'template_mn5lbav', templateParams)
+                .then(function(response) {
+                    console.log('Email enviado exitosamente:', response);
+                    showFeedback(feedbackElement, 'success', successMessage);
+                    
+                    // Limpiar formulario después de 3 segundos
+                    setTimeout(() => {
+                        feedbackElement.style.display = 'none';
+                    }, 5000);
+                }, function(error) {
+                    console.error('Error al enviar email:', error);
+                    showFeedback(feedbackElement, 'error', 'Error al enviar el mensaje. Por favor, inténtelo nuevamente.');
+                });
+        }
+
+        // Formulario Individual
+        document.getElementById('individualForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const feedbackElement = document.getElementById('individualFeedback');
+            const formData = new FormData(this);
+            
+            const templateParams = {
+                to_email: 'abc.cec.spa@gmail.com',
+                form_type: 'Detección de Necesidades - Individual',
+                employee_name: formData.get('employeeName'),
+                employee_position: formData.get('employeePosition'),
+                employee_skills: formData.get('employeeSkills'),
+                employee_gaps: formData.get('employeeGaps'),
+                message: `Evaluación Individual:
+                
+Nombre: ${formData.get('employeeName')}
+Cargo: ${formData.get('employeePosition')}
+Habilidades Requeridas: ${formData.get('employeeSkills')}
+Brechas Identificadas: ${formData.get('employeeGaps')}`
+            };
+            
+            sendEmail(templateParams, feedbackElement, '¡Evaluación individual enviada correctamente! Nos pondremos en contacto pronto.');
+            this.reset();
+        });
+
+        // Formulario Grupal
+        document.getElementById('grupalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const feedbackElement = document.getElementById('grupalFeedback');
+            const formData = new FormData(this);
+            
+            const templateParams = {
+                to_email: 'abc.cec.spa@gmail.com',
+                form_type: 'Detección de Necesidades - Grupal',
+                department: formData.get('department'),
+                department_goals: formData.get('departmentGoals'),
+                department_challenges: formData.get('departmentChallenges'),
+                department_skills: formData.get('departmentSkills'),
+                message: `Evaluación Grupal:
+                
+Departamento: ${formData.get('department')}
+Objetivos: ${formData.get('departmentGoals')}
+Desafíos: ${formData.get('departmentChallenges')}
+Habilidades Requeridas: ${formData.get('departmentSkills')}`
+            };
+            
+            sendEmail(templateParams, feedbackElement, '¡Evaluación grupal enviada correctamente! Analizaremos las necesidades de su departamento.');
+            this.reset();
+        });
+
+        // Formulario Organizacional
+        document.getElementById('organizacionalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const feedbackElement = document.getElementById('organizacionalFeedback');
+            const formData = new FormData(this);
+            
+            const templateParams = {
+                to_email: 'abc.cec.spa@gmail.com',
+                form_type: 'Detección de Necesidades - Organizacional',
+                company_name: formData.get('companyName'),
+                company_size: formData.get('companySize'),
+                company_goals: formData.get('companyGoals'),
+                company_challenges: formData.get('companyChallenges'),
+                message: `Evaluación Organizacional:
+                
+Empresa: ${formData.get('companyName')}
+Tamaño: ${formData.get('companySize')}
+Objetivos Estratégicos: ${formData.get('companyGoals')}
+Desafíos Organizacionales: ${formData.get('companyChallenges')}`
+            };
+            
+            sendEmail(templateParams, feedbackElement, '¡Evaluación organizacional enviada correctamente! Desarrollaremos un plan estratégico para su empresa.');
+            this.reset();
+        });
+
+        // Formulario de Contacto
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const feedbackElement = document.getElementById('contactFeedback');
+            const formData = new FormData(this);
+            const selectedInterests = getSelectedInterests();
+            
+            const templateParams = {
+                to_email: 'abc.cec.spa@gmail.com',
+                form_type: 'Formulario de Contacto',
+                contact_name: formData.get('contactName'),
+                contact_email: formData.get('contactEmail'),
+                contact_subject: formData.get('contactSubject'),
+                contact_message: formData.get('contactMessage'),
+                selected_interests: selectedInterests,
+                message: `Mensaje de Contacto:
+                
+Nombre: ${formData.get('contactName')}
+Email: ${formData.get('contactEmail')}
+Asunto: ${formData.get('contactSubject')}
+Mensaje: ${formData.get('contactMessage')}
+Áreas de Interés: ${selectedInterests || 'Ninguna seleccionada'}`
+            };
+            
+            sendEmail(templateParams, feedbackElement, '¡Mensaje enviado correctamente! Te contactaremos pronto.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
 
     <!-- Footer -->
     <footer class="footer">
